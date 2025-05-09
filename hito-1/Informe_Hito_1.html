@@ -7761,7 +7761,7 @@ a.anchor-link {
 </tbody>
 </table>
 <p>Se observa que existe una gran cantidad de juegos no han recibido ninguna review. Incluir estos juegos en el dataset puede resultar problemático si se desea realizar análisis que relacionen el puntaje promedio de reviews con otros atributos. Esto se debe a que, al no tener ninguna reseña, su puntaje promedio se representa como 0, lo cual no refleja una calificación real y puede introducir ruido o sesgos en el análisis. Por lo tanto, puede ser recomendable excluir estos registros en estudios donde las reviews son una variable clave. A continuación se puede apreciar la diferencia entre tener o no los juegos sin reviews.</p>
-<p><img alt="juegos_vs_juegos_con_review" height="200" src="img/juegos_vs_juegos_con_review.png"/></p>
+<p><img alt="juegos_vs_juegos_con_review" src="img/juegos_vs_juegos_con_review.png" style="height:350px;"/></p>
 <p>Otro aspecto relevante del análisis es la relación entre la duración promedio de los juegos y su puntaje de reseñas. Para estudiar esta relación, se agruparon los juegos según su duración promedio (<code>game_comp_all_avg</code>), excluyendo aquellos que no cuentan con reseñas válidas. Esta decisión se justifica en que los juegos sin reseñas presentan un puntaje promedio de <code>0</code>, lo que no representa una calificación real y puede distorsionar los resultados.</p>
 <p>La siguiente tabla muestra la distribución de juegos por intervalo de duración:</p>
 <h4 id="Cantidad-de-juegos-por-intervalo-de-duraci%C3%B3n-(en-horas)">Cantidad de juegos por intervalo de duración (en horas)<a class="anchor-link" href="#Cantidad-de-juegos-por-intervalo-de-duraci%C3%B3n-(en-horas)">¶</a></h4><table>
@@ -7804,7 +7804,7 @@ a.anchor-link {
 <li>El primero incluye todos los juegos válidos (sin reviews nulas),</li>
 <li>El segundo muestra el 95% inferior de los datos, eliminando outliers extremos.</li>
 </ul>
-<p><img alt="puntuacion_vs_duracion_outlier" height="200" src="img/puntuacion_vs_duracion_outlier.png"/></p>
+<p><img alt="puntuacion_vs_duracion_outlier" src="img/puntuacion_vs_duracion_outlier.png" style="height:350px;"/></p>
 </div>
 </div>
 </div>
@@ -8011,7 +8011,7 @@ Se aplicará un enfoque no supervisado sobre las combinaciones de géneros y car
 <h3 id="5.-Resultados-Preliminares">5. Resultados Preliminares<a class="anchor-link" href="#5.-Resultados-Preliminares">¶</a></h3><h4 id="An%C3%A1lisis-Preliminar-de-los-Datos">Análisis Preliminar de los Datos<a class="anchor-link" href="#An%C3%A1lisis-Preliminar-de-los-Datos">¶</a></h4><p>Durante la etapa de exploración inicial se detectó que un gran número de juegos no cuenta con reviews registradas. Esto representa un problema, ya que la variable que buscamos predecir es precisamente el promedio de puntuaciones obtenidas a través de estas reviews.</p>
 <p>Además, no todos los jugadores registran el abandono o cuando rejuegan algun juego. Esto implica que trabajar con juegos que tienen muy pocos registros totales pueden introducir ruido en el análisis. Por ejemplo, un juego podría parecer que tiene baja tasa de abandono simplemente porque nadie registró haberlo abandonado, o parecer rejugable por un único registro. En juegos con una base de jugadores muy reducida, estas interpretaciones pueden ser erróneas.</p>
 <p>Debido a lo anterior, fue necesario establecer <strong>umbrales mínimos (thresholds)</strong> para considerar un juego en el análisis. Estos thresholds fueron definidos inicialmente desde un punto de vista exploratorio, basándose en la distribución de reseñas. Se probaron distintos valores para evaluar su impacto en la calidad de los datos.</p>
-<p><img alt="review-dist1" height="200" src="img/review-distribution1.png"/></p>
+<p><img alt="review-dist1" src="img/review-distribution1.png" style="height:350px;"/></p>
 <h4 id="Construcci%C3%B3n-del-Conjunto-de-Datos">Construcción del Conjunto de Datos<a class="anchor-link" href="#Construcci%C3%B3n-del-Conjunto-de-Datos">¶</a></h4><p>Una vez definidos los thresholds, se creó un nuevo dataframe filtrado que solo contiene los juegos que superan dichos umbrales. Este nuevo conjunto de datos conserva únicamente las columnas relevantes: número de usuarios que completaron, abandonaron, rejugaron, reseñaron, el total de usuarios por juego, y el promedio de reviews.</p>
 <p>A partir de estas columnas, se construyeron nuevas métricas:</p>
 <ul>
@@ -8027,8 +8027,8 @@ Se aplicará un enfoque no supervisado sobre las combinaciones de géneros y car
 </ul>
 <p>Se realizaron visualizaciones para investigar patrones entre las tasas y la variable objetivo, así como una matriz de correlación. Estas herramientas confirmaron la existencia de correlaciones entre las tasas y el promedio de reviews, siendo <strong>engagement</strong> la más clara.</p>
 <p float="left">
-<img alt="scatter-rates" height="200" src="img/scatter-rates1.png"/>
-<img alt="juegos_vs_juegos_con_review" height="200" src="img/correlation-matrix.png"/>
+<img alt="scatter-rates" src="img/scatter-rates1.png" style="height:350px;"/>
+<img alt="juegos_vs_juegos_con_review" src="img/correlation-matrix.png" style="height:350px;"/>
 </p>
 <h4 id="Entrenamiento-y-Evaluaci%C3%B3n-de-Modelos">Entrenamiento y Evaluación de Modelos<a class="anchor-link" href="#Entrenamiento-y-Evaluaci%C3%B3n-de-Modelos">¶</a></h4><p>El conjunto de datos fue dividido en entrenamiento y prueba, utilizando una proporción 80/20. Se entrenaron distintos modelos para predecir el promedio de reviews:</p>
 <ul>
